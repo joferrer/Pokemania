@@ -2,6 +2,8 @@
 //Url de la API PokeApi
 const urlApi = 'https://pokeapi.co/api/v2/';
 
+
+
 /**
  * Se ejecuta al inciar la pagina. Lee la url buscando parametros y los manda a cargar. 
  */

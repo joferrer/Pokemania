@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/joferrer/Pokemania/issues"
   },
-  "homepage": "https://github.com/joferrer/Pokemania#readme"
+  "homepage": "https://github.com/joferrer/Pokemania#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
 }
