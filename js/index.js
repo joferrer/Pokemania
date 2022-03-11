@@ -2,6 +2,7 @@
 //Url de la API PokeApi
 const urlApi = 'https://pokeapi.co/api/v2/';
 
+const btnCounter = document.getElementById('counter');
 
 
 /**
@@ -27,11 +28,13 @@ function buscarPokemon(pokemon='pikachu'){
         console.log(response.forms[0].name);
         document.getElementsByClassName('card-title')[0].innerHTML+=response.forms[0].name;
         document.getElementsByTagName('img')[0].src=response.sprites.front_default;
-        console.log(response.types[0].type.name);
+        console.log("List: "+response.types.forEach(poke =>console.log(poke.type.name)));
 
         document.getElementsByClassName('card-text')[0].innerHTML = await descripcion(response);
-        document.getElementsByClassName('card-text')[1].innerHTML+=" "+response.types[0].type.name;
-
+        
+        //Tipo de los pokemon
+        response.types.forEach(poke =>document.getElementsByClassName('card-text')[1].innerHTML+=" "+poke.type.name)
+       
         document.getElementsByClassName('list-group-item')[0].innerHTML+= " "+ response.stats[0].base_stat;
         document.getElementsByClassName('list-group-item')[1].innerHTML+= " "+ response.stats[1].base_stat;
         document.getElementsByClassName('list-group-item')[2].innerHTML+= " "+ response.stats[2].base_stat;
@@ -55,3 +58,39 @@ const descripcion = async (response)=>{
     
     
 }
+
+btnCounter.onclick =()=>{
+    console.log('Aver 1')
+
+}
+const counterText = async (types)=>{
+    
+    return jsonP;
+    
+    
+}
+async function counterT(){
+    console.log('Aver');
+    const types = document.getElementsByClassName('card-text')[1].innerHTML.split(' ');
+    types.shift(); //Eliminar el string 'Tipo:' que esta ene la etiqueta.
+    const preua = ['a'];
+    console.log(preua.toString().split(','));
+
+    console.log(types);
+    const urlC = "http://localhost:3200/counter?types="+types.toString();
+    console.log(urlC);
+    let promiseF;
+    
+    try{
+        promiseF=await fetch(urlC);
+    }
+    catch (e){console.log(e);}
+    
+    //const jsonP =await promiseF.json();
+    //console.log( "WAT:"+await promiseF.text());
+    let debilidades = await promiseF.text();
+    document.getElementById('counterText').innerHTML+=debilidades;
+    //document.innerHTML+= textC;
+    
+}
+
